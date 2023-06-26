@@ -1,7 +1,41 @@
-#Welcome {
-    width: 300px;
-    height: 300px;
-    border-radius: 15px  ;
+html {
+    background-image: url("index background.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
 
-    outline: red dashed 1px;
+body {
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+
+#card {
+    height: 150px;
+    width: 150px;
+    border-radius: 10%;
+    
+    background-color: rgba(80, 245, 160, 0.4);
+}
+
+#enter {
+    background: rgba(27,27,27, 0.4);
+    color: #f4f4f4;
+    width: 90px;
+    height: 50px;
+    font-size: 15px;
+    border-color: #f4f4f4;
+
+    border-radius: 20px;
+    margin-left: 30px;
+}
+
+#head {
+    color: #FFF;
+    text-align: center;
 }
