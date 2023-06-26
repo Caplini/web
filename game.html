@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clicker game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js"></script>
+</head>
+
+<body>
+    <div id="main-bar">
+        <div id="values" >
+            <h1 id="CILCKCOUNTER">Clicks: 0</h1>
+            <h1 id="rebirths">Rebirths: 0</h1>
+            <h1 id="CILCKPOWER">Power: 1</h1>
+        </div> 
+
+        <div id="load-save">
+            <button onclick="SaveValues()" id="save">Save Game</button>
+            <button onclick="loadValues()" id="load">Load Save</button>
+        </div>
+    </div>
+    
+
+    <div>
+        <button onclick=onclclick() id="mainButton">CILCK ME</button>
+        <button onclick=powerup() id="morepower">+1 POWER (100)</button>
+        <input type=number id="multiBuy"></input>
+        <p><button onclick=rebirths() id="rebirth">REBIRTH (1000000)</button></p>
+    </div>
+
+</body>
+
+</html>
