@@ -37,7 +37,7 @@ function rebirths() {
         document.getElementById("rebirths").innerHTML = `Rebirths: ${rebirth.toFixed(0)}`;  
         document.getElementById("CILCKCOUNTER").innerHTML = `Clicks: ${x.toFixed(0)}`; 
         document.getElementById("CILCKPOWER").innerHTML = `Power: ${Cpower.toFixed(0)}`; 
-        document.getElementById("rebirth").innerHTML = `Power: ${1000000+(rebirth*100000)}`;
+        document.getElementById("rebirth").innerHTML = `Rebirth: ${1000000+(rebirth*100000)}`;
         console.log(rebirths);
 
     } else {
