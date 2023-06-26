@@ -17,7 +17,7 @@ function powerup() {
 
         Cpower += BuyNum;
         x -= 100*BuyNum;
-        document.getElementById("CILCKCOUNTER").innerHTML = `clicks: ${x.toFixed(0)}`; 
+        document.getElementById("CILCKCOUNTER").innerHTML = `Clicks: ${x.toFixed(0)}`; 
         document.getElementById("CILCKPOWER").innerHTML = `Power: ${Cpower.toFixed(0)}`; 
         console.log(x);
 
@@ -34,8 +34,8 @@ function rebirths() {
 
 
 
-        document.getElementById("rebirths").innerHTML = `rebirths: ${rebirth.toFixed(0)}`;  
-        document.getElementById("CILCKCOUNTER").innerHTML = `clicks: ${x.toFixed(0)}`; 
+        document.getElementById("rebirths").innerHTML = `Rebirths: ${rebirth.toFixed(0)}`;  
+        document.getElementById("CILCKCOUNTER").innerHTML = `Clicks: ${x.toFixed(0)}`; 
         document.getElementById("CILCKPOWER").innerHTML = `Power: ${Cpower.toFixed(0)}`; 
         document.getElementById("rebirth").innerHTML = `Power: ${1000000+(rebirth*100000)}`;
         console.log(rebirths);
