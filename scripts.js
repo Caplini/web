@@ -59,6 +59,7 @@ function loadValues() {
     console.log(x, rebirth, Cpower);
 
     document.getElementById("rebirths").innerHTML = `Rebirths: ${rebirth.toFixed(0)}`;  
+    document.getElementById("rebirth").innerHTML = `Rebirth: ${1000000+(rebirth*100000)}`;
     document.getElementById("CILCKCOUNTER").innerHTML = `Clicks: ${x.toFixed(0)}`; 
     document.getElementById("CILCKPOWER").innerHTML = `Power: ${Cpower.toFixed(0)}`; 
 }
