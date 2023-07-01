@@ -36,7 +36,18 @@ border-radius: 8px;
 
 #SpecialBuys {
     width: 50%;
-    position: 
+}
+
+#perm_5power {
+    border-radius: 8px;
+    background: rgba(27,27,27, 0.4);
+    color: #f4f4f4;
+    width: 300px;
+    height: 90px;
+    font-size: 20px;
+    border-color: #f4f4f4;
+    display: inline-block;
+    margin: 8px;
 }
 
 #CILCKCOUNTER {
@@ -56,6 +67,14 @@ border-radius: 8px;
 }
 
 #CILCKPOWER {
+    color: #FFFFFF;
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#permpowerhtml {
     color: #FFFFFF;
     display: inline-block;
     position: relative;
@@ -117,7 +136,7 @@ border-radius: 8px;
     width: 65px;
     font-size: 30px;
     border-color: #f4f4f4;
-    margin-top: 5px
+    margin-top: 5px;
 }
 
 #load-save, #values {
