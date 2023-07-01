@@ -16,29 +16,30 @@
 
             Quagga.init({
                 inputStream: {
-                type : "LiveStream",
-                constraints: {
-                    width: 640,
-                    height: 480,
-                    facingMode: "environment",
-                    autoFocus: true // add this line
-                }
+                    type : "LiveStream",
+                    constraints: {
+                        width: 640,
+                        height: 480,
+                        facingMode: { exact: 'environment' }, // Force use of the main camera
+                        autoFocus: true
+                    }
                 },
-            locator: {
-                patchSize: "medium",
-                halfSample: true
-            },
-            numOfWorkers: 4,
-            decoder: {
-                readers : ["ean_reader"]
-            },
-            locate: true
+                locator: {
+                    patchSize: "medium",
+                    halfSample: true
+                },
+                numOfWorkers: 4,
+                decoder: {
+                    readers : ["ean_reader"]
+                },
+                locate: true
             }, function(err) {
                 if (err) {
                     return console.log(err);
                 }
-            Quagga.start();
+                Quagga.start();
             });
+
 
 
             Quagga.onDetected(function(data) {
