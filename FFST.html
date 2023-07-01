@@ -20,8 +20,11 @@
                     constraints: {
                         width: 640,
                         height: 480,
-                        facingMode: { exact: 'environment' }, // Force use of the main camera
-                        autoFocus: true
+                        facingMode: { exact: 'environment' },
+                        autoFocus: true,
+                        advanced: [  // add this
+                            { zoom: 1 }
+                        ]
                     }
                 },
                 locator: {
@@ -39,6 +42,7 @@
                 }
                 Quagga.start();
             });
+
 
 
 
