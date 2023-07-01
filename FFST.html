@@ -18,12 +18,9 @@
                 inputStream: {
                     type : "LiveStream",
                     constraints: {
-                        width: 640,
-                        height: 480,
+                        width: { exact: 1920 },
+                        height: { exact: 1080 },
                         facingMode: "environment",
-                        advanced: [{
-                            zoom: 1.0
-                        }]
                     }
                 },
                 locator: {
@@ -41,6 +38,7 @@
                 }
                 Quagga.start();
             });
+
 
 
             Quagga.onDetected(function(data) {
