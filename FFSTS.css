@@ -1,0 +1,37 @@
+body {
+    background-color: #272727;
+}
+
+#main {
+    display: flex;
+}
+
+.mainLook {
+    align-items: center;
+    margin: 10px;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #616161;
+}
+
+#itemname {
+    height: 30px;
+}
+
+#count {
+    width: 70px;
+    height: 30px;
+}
+
+#add {
+    border-radius: 8px;
+    margin: 10px;
+    height: 35px;
+}
+
+#total {
+    margin: 10px;
+    height: 30px;
+    color: #ffffff;
+    font-size: 30px;
+}

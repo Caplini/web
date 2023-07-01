@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barcode Scanner</title>
+</head>
+<body>
+    <div id="interactive" class="viewport"></div>
+    <div id="barcode"></div>
+    <div id="product-name"></div>
+    <button id="new-scan">Start New Scan</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script>
+        function startScan() {
+            document.getElementById('barcode').innerText = '';
+            document.getElementById('product-name').innerText = '';
+
+            Quagga.init({
+                inputStream: {
+                type : "LiveStream",
+                constraints: {
+                    width: 640,
+                    height: 480,
+                    facingMode: "user",
+                    autoFocus: true // add this line
+                }
+                },
+            locator: {
+                patchSize: "medium",
+                halfSample: true
+            },
+            numOfWorkers: 4,
+            decoder: {
+                readers : ["ean_reader"]
+            },
+            locate: true
+            }, function(err) {
+                if (err) {
+                    return console.log(err);
+                }
+            Quagga.start();
+            });
+
+
+            Quagga.onDetected(function(data) {
+                var barcode = data.codeResult.code;
+                document.getElementById('barcode').innerText = barcode;
+
+                fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.product && data.product.product_name) {
+                            var productName = data.product.product_name;
+                            document.getElementById('product-name').innerText = productName;
+                            Quagga.stop();
+                        }
+                    })
+                    .catch(error => console.error(error));
+            });
+        }
+
+        document.getElementById('new-scan').addEventListener('click', startScan);
+
+        // Start scanning immediately when the page loads
+        startScan();
+    </script>
+</body>
+</html>
