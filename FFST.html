@@ -20,11 +20,10 @@
                     constraints: {
                         width: 640,
                         height: 480,
-                        facingMode: { exact: 'environment' },
-                        autoFocus: true,
-                        advanced: [  // add this
-                            { zoom: 1 }
-                        ]
+                        facingMode: "environment",
+                        advanced: [{
+                            zoom: 1.0
+                        }]
                     }
                 },
                 locator: {
@@ -42,8 +41,6 @@
                 }
                 Quagga.start();
             });
-
-
 
 
             Quagga.onDetected(function(data) {
