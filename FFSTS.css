@@ -34,12 +34,14 @@ body {
     height: 30px;
     color: #ffffff;
     font-size: 30px;
+    background-color: transparent;
 }
 
 #barcode {
     margin: 10px;
     color: #ffffff;
     font-size: 30px;
+    background-color: transparent;
 }
 
 #product-name {
