@@ -11,17 +11,15 @@
     <select id="deviceSelection"></select>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
     <script>
-        function startScan() {
+        function startScan(deviceId) {
             document.getElementById('barcode').innerText = '';
             document.getElementById('product-name').innerText = '';
-
-            var selectedDevice = document.getElementById('deviceSelection').value;
 
             Quagga.init({
                 inputStream: {
                     type : "LiveStream",
                     constraints: {
-                        deviceId: selectedDevice,
+                        deviceId: deviceId,
                         width: 640,
                         height: 480,
                         facingMode: "environment"
@@ -60,7 +58,10 @@
             });
         }
 
-        document.getElementById('new-scan').addEventListener('click', startScan);
+        document.getElementById('new-scan').addEventListener('click', function() {
+            Quagga.stop();
+            startScan(document.getElementById('deviceSelection').value);
+        });
 
         // Initiate camera selection
         Quagga.CameraAccess.enumerateVideoDevices()
@@ -75,10 +76,16 @@
                     $option.appendChild(document.createTextNode(device.label || device.deviceId || device.id));
                     $deviceSelection.appendChild($option);
                 });
+
+                // Start scanning with the first camera in the list
+                startScan($deviceSelection.value);
             });
 
-        // Start scanning immediately when the page loads
-        startScan();
+        // Update camera when the selected option changes
+        document.getElementById('deviceSelection').addEventListener('change', function() {
+            Quagga.stop();
+            startScan(this.value);
+        });
     </script>
 </body>
 </html>
