@@ -7,9 +7,15 @@
     <div id="product-name"></div>
     <script src="FFSTJ.js"></script>
     <link rel="stylesheet" href="FFSTS.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 </head>
 
 <body>
+    <div id="interactive" class="viewport"></div>
+    <div id="barcode"></div>
+    <div id="product-name"></div>
+    <button id="new-scan" onclick="startScan()">Start New Scan</button>
+    <select id="deviceSelection"></select>
     <div id="main">
         <strong><input id="itemname" class="mainLook"></input></strong>
         <strong><input id="count" class="mainLook"></input></strong>
