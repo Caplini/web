@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Barcode Scanner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.css">
 </head>
 <body>
     <div id="interactive" class="viewport"></div>
@@ -17,7 +18,9 @@
 
             Quagga.init({
                 inputStream: {
+                    name: "Live",
                     type : "LiveStream",
+                    target: document.querySelector('#interactive'), // The HTML element to apply the stream to
                     constraints: {
                         deviceId: deviceId,
                         width: 640,
@@ -33,7 +36,25 @@
                 decoder: {
                     readers : ["ean_reader"]
                 },
-                locate: true
+                locate: true,
+                area: { // defines rectangle of the detection/localization area
+                    top: "0%",    // top offset
+                    right: "0%",  // right offset
+                    left: "0%",   // left offset
+                    bottom: "0%"  // bottom offset
+                },
+                singleChannel: false, // true: only the red color-channel is read
+                controls: {
+                    zoom: {
+                        maxOpticalZoom: 10,
+                        pinching: true
+                    }
+                },
+                tracking: true,
+                debug: { // Visualization of located and decoded barcodes
+                    drawScanline: true,
+                    showPattern: true
+                }
             }, function(err) {
                 if (err) {
                     return console.log(err);
