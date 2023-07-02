@@ -2,47 +2,65 @@
 <html>
 <head>
     <title>Barcode Scanner</title>
-    <script src="https://unpkg.com/@zxing/library@0.18.3/umd/index.min.js"></script>
 </head>
 <body>
-    <button id="new-scan">Start new scan</button>
+    <div id="interactive" class="viewport"></div>  
     <div id="barcode"></div>
     <div id="product-name"></div>
-    <video id="video" width="300" height="200" style="border: 1px solid gray"></video>
+    <button id="new-scan">Start New Scan</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
     <script>
-        let scanner;
-        let selectedDeviceId;
-
         function startScan() {
             document.getElementById('barcode').innerText = '';
             document.getElementById('product-name').innerText = '';
 
-            scanner = new ZXing.BrowserMultiFormatReader();
-            scanner.listVideoInputDevices().then((videoInputDevices) => {
-                selectedDeviceId = videoInputDevices[videoInputDevices.length - 1].deviceId;
-
-                scanner.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-                    if (result) {
-                        document.getElementById('barcode').innerText = result.text;
-                        scanner.reset();
-                        fetch(`https://world.openfoodfacts.org/api/v0/product/${result.text}.json`)
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.product && data.product.product_name) {
-                                    var productName = data.product.product_name;
-                                    document.getElementById('product-name').innerText = productName;
-                                }
-                            })
-                            .catch(error => console.error(error));
+            Quagga.init({
+                inputStream: {
+                    type : "LiveStream",
+                    constraints: {
+                        width: 640,
+                        height: 480,
+                        facingMode: "environment"
                     }
-                });
+                },
+                locator: {
+                    patchSize: "medium",
+                    halfSample: true
+                },
+                numOfWorkers: 4,
+                decoder: {
+                    readers : ["ean_reader"]
+                },
+                locate: true,
+                zoom: true
+            }, function(err) {
+                if (err) {
+                    return console.log(err);
+                }
+                Quagga.start();
+            });
+
+            Quagga.onDetected(function(data) {
+                var barcode = data.codeResult.code;
+                document.getElementById('barcode').innerText = barcode;
+
+                fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.product && data.product.product_name) {
+                            var productName = data.product.product_name;
+                            document.getElementById('product-name').innerText = productName;
+                            Quagga.stop();
+                        }
+                    })
+                    .catch(error => console.error(error));
             });
         }
 
         document.getElementById('new-scan').addEventListener('click', startScan);
 
         // Start scanning immediately when the page loads
-        window.onload = startScan;
+        startScan();
     </script>
 </body>
 </html>
