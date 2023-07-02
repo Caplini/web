@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Barcode Scanner</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.css">
-</head>
+    <head>
+        <title>Barcode Scanner</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.css">
+        <link rel="stylesheet" href="FFSTs.css">
+    </head>
 <body>
-    <div id="interactive" class="viewport"></div>
-    <div id="barcode"></div>
-    <div id="product-name"></div>
-    <button id="new-scan">Start New Scan</button>
-    <select id="deviceSelection"></select>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <body>
+        <div id="interactive" class="viewport"></div>
+        <div id="barcode"></div>
+        <div id="product-name"></div>
+        <button id="new-scan">Start New Scan</button>
+        <select id="deviceSelection"></select>
+    
+        <div id="main">
+            <strong><input id="itemname" class="mainLook"></input></strong>
+            <strong><input id="count" class="mainLook"></input></strong>
+            <strong><button onclick=addtotals() id="add" class="mainLook">ADD+</button></strong>
+            <strong><p id="total">X: X</p></strong>
+        </div>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+        <script src="FFSTJ.js"></script>
     <script>
         function startScan(deviceId) {
             document.getElementById('barcode').innerText = '';
@@ -108,15 +119,5 @@
             startScan(this.value);
         });
     </script>
-
-    <script src="FFSTJ.js"></script>
-    <link rel="stylesheet" href="FFSTs.css">
-    <div id="main">
-        <strong><input id="itemname" class="mainLook"></input></strong>
-        <strong><input id="count" class="mainLook"></input></strong>
-        <strong><button onclick=addtotals() id="add" class="mainLook">ADD+</button></strong>
-        <strong><p id="total">X: X</p></strong>
-    </div>
-
 </body>
 </html>
