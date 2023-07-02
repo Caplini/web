@@ -35,3 +35,27 @@ body {
     color: #ffffff;
     font-size: 30px;
 }
+
+#barcode {
+    margin: 10px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+#product-name {
+    margin: 10px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+#new-scan {
+    margin: 10px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+#deviceSelection {
+    margin: 10px;
+    color: #ffffff;
+    font-size: 30px;
+}
