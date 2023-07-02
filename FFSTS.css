@@ -14,22 +14,22 @@ body {
     background-color: #616161;
 }
 
-#itemname {
+#itemname1, #itemname2, #itemname3, #itemname4 {
     height: 30px;
 }
 
-#count {
+#count1, #count2, #count3, #count4 {
     width: 70px;
     height: 30px;
 }
 
-#add {
+#add1, #add2, #add3, #add4 {
     border-radius: 8px;
     margin: 10px;
     height: 35px;
 }
 
-#total {
+#total1, #total2, #total3, #total4 {
     margin: 10px;
     height: 30px;
     color: #ffffff;
@@ -45,7 +45,7 @@ body {
 }
 
 #product-name {
-    margin: 10px;
+    margin: 10px;1, 2
     color: #ffffff;
     font-size: 30px;
     background-color: transparent;
@@ -58,6 +58,12 @@ body {
 }
 
 #deviceSelection {
+    margin: 10px;
+    height: 30px;
+    color: #ffffff;
+}
+
+#inputSelection {
     margin: 10px;
     height: 30px;
     color: #ffffff;

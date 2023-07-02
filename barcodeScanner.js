@@ -51,7 +51,7 @@ function startScan(deviceId) {
     Quagga.onDetected(function(data) {
         var barcode = data.codeResult.code;
         document.getElementById('barcode').innerText = barcode;
-
+    
         fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
             .then(response => response.json())
             .then(data => {
@@ -59,14 +59,18 @@ function startScan(deviceId) {
                     var productName = data.product.product_name;
                     document.getElementById('product-name').innerText = productName;
                     
-                    // Set the value of the "itemname" input box to the product name
-                    document.getElementById('itemname').value = productName;
-
+                    // Get the value of the "inputSelection" select box
+                    var inputSelectionValue = document.getElementById('inputSelection').value;
+    
+                    // Set the value of the correct "itemname" input box to the product name
+                    document.getElementById('itemname' + inputSelectionValue).value = productName;
+    
                     Quagga.stop();
                 }
             })
             .catch(error => console.error(error));
     });
+    
 }
 
 document.getElementById('new-scan').addEventListener('click', function() {
