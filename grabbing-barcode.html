@@ -14,30 +14,38 @@
             document.getElementById('barcode').innerText = '';
             document.getElementById('product-name').innerText = '';
 
-            Quagga.init({
-                inputStream: {
-                    type : "LiveStream",
-                    constraints: {
-                        width: 640,
-                        height: 480,
-                        facingMode: "environment"
-                    }
-                },
-                locator: {
-                    patchSize: "medium",
-                    halfSample: true
-                },
-                numOfWorkers: 4,
-                decoder: {
-                    readers : ["ean_reader"]
-                },
-                locate: true,
-                zoom: true
-            }, function(err) {
-                if (err) {
-                    return console.log(err);
+            var inputStream = {
+                type : "LiveStream",
+                constraints: {
+                    width: 640,
+                    height: 480,
+                    facingMode: "environment"
                 }
-                Quagga.start();
+            };
+
+            // Get the list of available cameras
+            Quagga.CameraAccess.enumerateVideoDevices()
+            .then(function(devices) {
+                // Create a select element to let the user choose the camera
+                var $deviceSelection = document.getElementById("deviceSelection");
+                while ($deviceSelection.firstChild) {
+                    $deviceSelection.removeChild($deviceSelection.firstChild);
+                }
+                devices.forEach(function(device) {
+                    var $option = document.createElement("option");
+                    $option.value = device.deviceId || device.id;
+                    $option.appendChild(document.createTextNode(device.label || device.deviceId || device.id));
+                    $deviceSelection.appendChild($option);
+                });
+            })
+            .then(function() {
+                // Initialize Quagga with the selected camera
+                Quagga.init(inputStream, function(err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    Quagga.start();
+                });
             });
 
             Quagga.onDetected(function(data) {
