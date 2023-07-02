@@ -50,12 +50,12 @@ body {
 
 #new-scan {
     margin: 10px;
+    height: 30px;
     color: #ffffff;
-    font-size: 30px;
 }
 
 #deviceSelection {
     margin: 10px;
+    height: 30px;
     color: #ffffff;
-    font-size: 30px;
 }
