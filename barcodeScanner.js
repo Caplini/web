@@ -58,6 +58,10 @@ function startScan(deviceId) {
                 if (data.product && data.product.product_name) {
                     var productName = data.product.product_name;
                     document.getElementById('product-name').innerText = productName;
+                    
+                    // Set the value of the "itemname" input box to the product name
+                    document.getElementById('itemname').value = productName;
+
                     Quagga.stop();
                 }
             })
