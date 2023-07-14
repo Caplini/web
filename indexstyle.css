@@ -6,36 +6,39 @@ html {
     background-attachment: fixed;
 }
 
+header {
+    background-color: #4e4e4e;
+      padding: 0px;
+      text-align: center;
+      height: 60px;
+      display: flex;
+}
+
+.logo {
+    text-align: left;
+    padding: 5px;
+    padding-right: 2.5%;
+}
+
+.tabs {
+    color: #cecece;
+    font-size: 95%;
+    padding: 19.54px;
+    text-decoration: none;
+}
+
+.tabs:hover {
+    color: #fff;
+    font-size: 100%;
+    outline: 1px solid #fff;
+    outline-offset: -7px;
+    border-radius: 3px;
+}
+
 body {
     margin: 0;
     height: 100vh;
-    display: grid;
     place-items: center;
     font-family: Arial, sans-serif;
     font-size: 20px;
-}
-
-#card {
-    height: 150px;
-    width: 150px;
-    border-radius: 10%;
-    
-    background-color: rgba(80, 245, 160, 0.4);
-}
-
-#enter {
-    background: rgba(27,27,27, 0.4);
-    color: #f4f4f4;
-    width: 90px;
-    height: 50px;
-    font-size: 15px;
-    border-color: #f4f4f4;
-
-    border-radius: 20px;
-    margin-left: 30px;
-}
-
-#head {
-    color: #FFF;
-    text-align: center;
 }
