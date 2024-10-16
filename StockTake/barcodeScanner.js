@@ -9,8 +9,8 @@ function startScan(deviceId) {
             target: document.querySelector('#interactive'), // The HTML element to apply the stream to
             constraints: {
                 deviceId: deviceId,
-                width: 640,
-                height: 480,
+                width: 1280,
+                height: 960,
                 facingMode: "environment"
             }
         },
